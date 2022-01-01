@@ -19,7 +19,7 @@ export default function Launchpad() {
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
-  }, []);
+  });
 
   const loadFromLocalStorage = () => {
     return JSON.parse(window.localStorage.getItem("lastUpdate"));

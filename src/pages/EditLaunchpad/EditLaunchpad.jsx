@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import SoundGroup1 from "../../SoundGroups/SoundGroup1.js";
 import Sounds from "../../SoundGroups/Sounds.js";
 import EditInputRow from "../../components/EditInput/EditInputRow.jsx";
-import Launchpad from "../Launchpad/Launchpad.jsx";
 
 export default function EditLaunchpad() {
   const [soundGroup, setSoundGroup] = useState([]);
@@ -23,7 +22,7 @@ export default function EditLaunchpad() {
 
   useEffect(() => {
     UpdateLocalStorage();
-  },[soundGroup])
+  })
 
     const UpdateLocalStorage = () => {
     window.localStorage.setItem('lastUpdate', JSON.stringify(soundGroup));
@@ -51,7 +50,6 @@ export default function EditLaunchpad() {
 
   const editSoundId = (e) => {
     const newSoundGroup = [...soundGroup];
-    const soundFromData = Sounds[e.target.id];
     const newUrl = findSoundUrl(e.target.value);
     const item = newSoundGroup[e.target.id];
     const newKey = e.target.value;
