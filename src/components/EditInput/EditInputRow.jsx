@@ -1,9 +1,36 @@
-export default function EditInputRow({key, keyboardKey, id, url}) {
+import Sounds from "../../SoundGroups/Sounds.js";
+
+export default function EditInputRow({
+  item,
+  index,
+  editRowKeyBoardKey,
+  editSoundId,
+  emptyRowKeyBoardKey,
+  emptySoundId
+}) {
+
   return (
-    <div id={key}>
-      <input type="text" value={keyboardKey}/>
-      <input type="text" value={id}/>
-      <input type="text" value={url}/>
+    <div>
+      <input
+        id={index}
+        type="text"
+        value={item.key}
+        onChange={editRowKeyBoardKey}
+        onClick={emptyRowKeyBoardKey}
+      />
+      <input
+        id={index}
+        type="text"
+        list="sounds"
+        value={item.id}
+        onChange={editSoundId}
+        onClick={emptySoundId}
+      />
+      <datalist id="sounds">
+        {Sounds.map((sound, idx) => {
+          return <option key={idx} value={sound.id}>{sound.id}</option>;
+        })}
+      </datalist>
     </div>
-  )
+  );
 }
