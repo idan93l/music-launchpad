@@ -6,7 +6,8 @@ export default function EditInputRow({
   editRowKeyBoardKey,
   editSoundId,
   emptyRowKeyBoardKey,
-  emptySoundId
+  emptySoundId,
+  sounds
 }) {
 
   return (

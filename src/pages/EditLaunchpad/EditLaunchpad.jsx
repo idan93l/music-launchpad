@@ -1,32 +1,9 @@
-import React, { useEffect, useState } from "react";
-import SoundGroup1 from "../../SoundGroups/SoundGroup1.js";
+// import React, { useEffect, useState } from "react";
+// import SoundGroup1 from "../../SoundGroups/SoundGroup1.js";
 import Sounds from "../../SoundGroups/Sounds.js";
 import EditInputRow from "../../components/EditInput/EditInputRow.jsx";
 
-export default function EditLaunchpad() {
-  const [soundGroup, setSoundGroup] = useState([]);
-  // const [soundGroup, setSoundGroup] = useState([SoundGroup1]);
-
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const FetchedSoundGroup = SoundGroup1;
-        setSoundGroup(FetchedSoundGroup);
-        // console.log(FetchedSoundGroup);
-      } catch (error) {
-        console.log(`Could not load sound group`);
-      }
-    };
-    getData();
-  }, []);
-
-  useEffect(() => {
-    UpdateLocalStorage();
-  })
-
-    const UpdateLocalStorage = () => {
-    window.localStorage.setItem('lastUpdate', JSON.stringify(soundGroup));
-  }
+export default function EditLaunchpad({ soundGroup, setSoundGroup, soundDatabase }) {
 
   const editRowKeyBoardKey = (e) => {
     const newSoundGroup = [...soundGroup];
@@ -72,7 +49,7 @@ export default function EditLaunchpad() {
     setSoundGroup(newSoundGroup);
   };
 
-  const InputRows = () => {
+  const inputRows = () => {
     return soundGroup.map((item, index) => {
       return (
         <EditInputRow
@@ -83,14 +60,11 @@ export default function EditLaunchpad() {
           editSoundId={editSoundId}
           emptyRowKeyBoardKey={emptyRowKeyBoardKey}
           emptySoundId={emptySoundId}
+          sounds={soundDatabase}
         />
       );
     });
   };
 
-  return (
-    <div>
-      {InputRows()}
-    </div>
-  );
+  return <div>{inputRows()}</div>;
 }

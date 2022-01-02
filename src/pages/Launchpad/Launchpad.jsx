@@ -1,35 +1,18 @@
 import React, { useState, useEffect } from "react";
 import Pad from "../../components/Pad/Pad.jsx";
 
-export default function Launchpad() {
-  const [padSounds, setPadSounds] = useState([]);
+export default function Launchpad({soundGroup}) {
   const [soundName, setSoundName] = useState("");
-
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const FetchedSoundGroup = loadFromLocalStorage();
-        setPadSounds(FetchedSoundGroup);
-      } catch (error) {
-        console.log(`Could not load pad sounds`);
-      }
-    };
-    getData();
-  }, []);
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
     return () => {document.removeEventListener("keydown", handleKeyDown)}
   });
 
-  const loadFromLocalStorage = () => {
-    return JSON.parse(window.localStorage.getItem("lastUpdate"));
-  };
-
   const findSoundName = (key) => {
-    for(let i = 0; i < padSounds.length; i++) {
-      if(padSounds[i].key === key)
-        return padSounds[i].id
+    for(let i = 0; i < soundGroup.length; i++) {
+      if(soundGroup[i].key === key)
+        return soundGroup[i].id
     }
   }
 
@@ -49,7 +32,7 @@ export default function Launchpad() {
   };
 
   const pads = () => {
-    return padSounds.map((dataPad, index) => {
+    return soundGroup.map((dataPad, index) => {
       return <Pad key={index} info={dataPad} index={index} play={play} />;
     });
   };
