@@ -19,6 +19,7 @@ export default function Launchpad() {
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
+    return () => {document.removeEventListener("keydown", handleKeyDown)}
   });
 
   const loadFromLocalStorage = () => {
