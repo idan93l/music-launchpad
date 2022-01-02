@@ -5,6 +5,7 @@ export default function EditInputRow({
   index,
   editRowKeyBoardKey,
   editSoundId,
+  deleteRow,
   emptyRowKeyBoardKey,
   emptySoundId,
   sounds
@@ -28,10 +29,11 @@ export default function EditInputRow({
         onClick={emptySoundId}
       />
       <datalist id="sounds">
-        {Sounds.map((sound, idx) => {
+        {sounds.map((sound, idx) => {
           return <option key={idx} value={sound.id}>{sound.id}</option>;
         })}
       </datalist>
+      <button id={index} onClick={deleteRow}>Delete</button>
     </div>
   );
 }

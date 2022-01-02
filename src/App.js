@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
 import NavBar from "./components/NavBar/NavBar.jsx";
 import Launchpad from "./pages/Launchpad/Launchpad.jsx";
 import EditLaunchpad from "./pages/EditLaunchpad/EditLaunchpad.jsx";
@@ -9,8 +8,6 @@ import SoundGroup1 from "./SoundGroups/SoundGroup1.js";
 
 export default function App() {
   const [soundGroup, setSoundGroup] = useState([]);
-
-  const [soundDatabase, setSoundDatabase] = useState([]);
 
   useEffect(() => {
     // const getData = async () => {
@@ -25,20 +22,6 @@ export default function App() {
     // getData();
     setSoundGroup(SoundGroup1);
   }, []);
-
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const data = await axios.get(
-          `https://61d163d7da87830017e59204.mockapi.io/SoundsData`
-        );
-        setSoundDatabase(data);
-      } catch (error) {
-        console.log(`Error: ${error}`);
-      }
-    };
-      getData();
-  },[]);
 
   // useEffect(() => {
   //   UpdateLocalStorage();
@@ -60,7 +43,6 @@ export default function App() {
               <EditLaunchpad
                 soundGroup={soundGroup}
                 setSoundGroup={setSoundGroup}
-                soundDatabase={soundDatabase}
               />
             }
           />
