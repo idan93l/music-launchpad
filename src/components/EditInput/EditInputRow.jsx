@@ -1,5 +1,3 @@
-import Sounds from "../../SoundGroups/Sounds.js";
-
 export default function EditInputRow({
   item,
   index,
@@ -20,20 +18,20 @@ export default function EditInputRow({
         onChange={editRowKeyBoardKey}
         onClick={emptyRowKeyBoardKey}
       />
-      <input
+      {/* <input
         id={index}
         type="text"
         list="sounds"
         value={item.id}
         onChange={editSoundId}
         onClick={emptySoundId}
-      />
-      <datalist id="sounds">
+      /> */}
+      <select id={index} value={item.id} onChange={editSoundId}>
         {sounds.map((sound, idx) => {
           return <option key={idx} value={sound.id}>{sound.id}</option>;
         })}
-      </datalist>
-      <button id={index} onClick={deleteRow}>Delete</button>
+      </select>
+      <button id={index} onClick={deleteRow}>DELETE</button>
     </div>
   );
 }

@@ -5,10 +5,10 @@ export default function NavBar() {
   return (
     <div className='NavBar'>
       <Link to='/' className='NavBarButton'>
-        Home
+        HOME
       </Link>
       <Link to='/EditLaunchpad' className='NavBarButton'>
-        Edit Launchpad
+        EDIT LAUNCHPAD
       </Link>
     </div>
   );

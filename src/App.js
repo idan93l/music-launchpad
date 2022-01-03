@@ -7,10 +7,14 @@ import SoundGroup1 from "./SoundGroups/SoundGroup1.js";
 
 export default function App() {
   const [soundGroup, setSoundGroup] = useState([]);
+  const [power, setPower] = React.useState(true);
+  const [volume, setVolume] = React.useState(1);
 
   useEffect(() => {
     setSoundGroup(SoundGroup1);
   }, []);
+
+  console.log(soundGroup);
 
   // useEffect(() => {
   //   UpdateLocalStorage();
@@ -25,7 +29,18 @@ export default function App() {
       <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route path="/" element={<Launchpad soundGroup={soundGroup}/>} />
+          <Route
+            path="/"
+            element={
+              <Launchpad
+                soundGroup={soundGroup}
+                power={power}
+                setPower={setPower}
+                volume={volume}
+                setVolume={setVolume}
+              />
+            }
+          />
           <Route
             path="/EditLaunchpad"
             element={

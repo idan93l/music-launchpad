@@ -3,7 +3,7 @@ import axios from "axios";
 import SoundGroup1 from "../../SoundGroups/SoundGroup1.js";
 import SoundGroup2 from "../../SoundGroups/SoundGroup2.js";
 import EditInputRow from "../../components/EditInput/EditInputRow.jsx";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export default function EditLaunchpad({ soundGroup, setSoundGroup }) {
   const [soundDatabase, setSoundDatabase] = useState([]);
@@ -23,25 +23,23 @@ export default function EditLaunchpad({ soundGroup, setSoundGroup }) {
   }, []);
 
   const toKeyCode = (key) => {
-    return key.toUpperCase().charCodeAt(0);
+    return key ? key.charCodeAt(0) : "";
   };
 
-  const isKey = (key) => {
-    return key.length === 1 && key.match(/[A-Z]/i);
+  const checkKeyLength = (key) => {
+    return key.length <= 1;
   };
 
   const editRowKeyBoardKey = (e) => {
-    const newKey = e.target.value;
-    if (!isKey(newKey)) return;
-      const newKeyCode = toKeyCode(newKey);
-      const newSoundGroup = [...soundGroup];
-      const item = newSoundGroup[e.target.id];
-      item.key = newKey.toUpperCase();
-      item.keyCode = newKeyCode;
-      setSoundGroup(newSoundGroup);
+    const newKey = e.target.value.toUpperCase();
+    if (!checkKeyLength(newKey)) return;
+    const newKeyCode = toKeyCode(newKey);
+    const newSoundGroup = [...soundGroup];
+    const item = newSoundGroup[e.target.id];
+    item.key = newKey;
+    item.keyCode = newKeyCode;
+    setSoundGroup(newSoundGroup);
   };
-
-  // console.log(soundGroup);
 
   const findSoundUrl = (value) => {
     for (let i = 0; i < soundDatabase.length; i++) {
@@ -109,17 +107,21 @@ export default function EditLaunchpad({ soundGroup, setSoundGroup }) {
   return (
     <div>
       <br />
-      <button onClick={() => setSoundGroup(SoundGroup1)}>Default Preset 1</button>
-      <button onClick={() => setSoundGroup(SoundGroup2)}>Default Preset 2</button>
+      <button onClick={() => setSoundGroup(SoundGroup1)}>
+        Default Preset 1
+      </button>
+      <button onClick={() => setSoundGroup(SoundGroup2)}>
+        Default Preset 2
+      </button>
       <br />
       <br />
       {inputRows()}
       <br />
+      <button onClick={createRow}>ADD</button>
+
       <br />
-      <button onClick={createRow}>Add</button>
       <br />
-      <br />
-      <Link to='/' className='NavBarButton'>
+      <Link to="/" className="NavBarButton">
         BACK TO LAUNCHPAD
       </Link>
     </div>
