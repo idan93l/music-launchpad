@@ -18,8 +18,6 @@ export default function Launchpad({ soundGroup, power, setPower, volume, setVolu
     }
   };
 
-  
-
   const handleKeyDown = (e) => {
     const someKey = e.keyCode;
     const keyName = findSoundName(someKey);
@@ -27,7 +25,7 @@ export default function Launchpad({ soundGroup, power, setPower, volume, setVolu
   };
 
   const play = (keyCode, sound) => {
-    if (!keyCode || !sound || !power) return;
+    if (!keyCode || !sound || !power || volume === "0") return;
     setSoundName(sound);
     const audio = document.getElementById(keyCode);
     audio.currentTime = 0;

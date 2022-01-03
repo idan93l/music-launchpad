@@ -7,6 +7,7 @@ import SoundGroup1 from "./SoundGroups/SoundGroup1.js";
 
 export default function App() {
   const [soundGroup, setSoundGroup] = useState([]);
+  // const [preset, setPreset] = useState(SoundGroup1);
   const [power, setPower] = React.useState(true);
   const [volume, setVolume] = React.useState(1);
 
@@ -14,7 +15,7 @@ export default function App() {
     setSoundGroup(SoundGroup1);
   }, []);
 
-  console.log(soundGroup);
+  // console.log(soundGroup);
 
   // useEffect(() => {
   //   UpdateLocalStorage();

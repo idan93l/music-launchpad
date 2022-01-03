@@ -1,3 +1,5 @@
+// import { useState } from "react";
+
 export default function EditInputRow({
   item,
   index,
@@ -5,9 +7,12 @@ export default function EditInputRow({
   editSoundId,
   deleteRow,
   emptyRowKeyBoardKey,
-  emptySoundId,
+  // emptySoundId,
   sounds
 }) {
+  // const [thisKey, setThisKey] = useState(item.key);
+  // const [thisId, setThisId] = useState(item.Id);
+  // const [thisDrop, setThisDrop] = useState(item.sounds);
 
   return (
     <div>
