@@ -4,22 +4,11 @@ import NavBar from "./components/NavBar/NavBar.jsx";
 import Launchpad from "./pages/Launchpad/Launchpad.jsx";
 import EditLaunchpad from "./pages/EditLaunchpad/EditLaunchpad.jsx";
 import SoundGroup1 from "./SoundGroups/SoundGroup1.js";
-// import Sounds from "./SoundGroups/Sounds.js";
 
 export default function App() {
   const [soundGroup, setSoundGroup] = useState([]);
 
   useEffect(() => {
-    // const getData = async () => {
-    //   try {
-    //     const FetchedSoundGroup = SoundGroup1;
-    //     setSoundGroup(FetchedSoundGroup);
-    //     // console.log(FetchedSoundGroup);
-    //   } catch (error) {
-    //     console.log(`Could not load sound group`);
-    //   }
-    // };
-    // getData();
     setSoundGroup(SoundGroup1);
   }, []);
 

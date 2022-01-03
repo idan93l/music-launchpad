@@ -1,34 +1,35 @@
 import React, { useState, useEffect } from "react";
 import Pad from "../../components/Pad/Pad.jsx";
+import { Link } from 'react-router-dom';
 
-export default function Launchpad({soundGroup}) {
-  const [soundName, setSoundName] = useState("");
+export default function Launchpad({ soundGroup }) {
+  const [soundName, setSoundName] = useState("Ready");
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
-    return () => {document.removeEventListener("keydown", handleKeyDown)}
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
   });
 
-  const findSoundName = (key) => {
-    for(let i = 0; i < soundGroup.length; i++) {
-      if(soundGroup[i].key === key)
-        return soundGroup[i].id
+  const findSoundName = (keyCode) => {
+    for (let i = 0; i < soundGroup.length; i++) {
+      if (soundGroup[i].keyCode === keyCode) return soundGroup[i].id;
     }
-  }
+  };
 
   const handleKeyDown = (e) => {
-    const someKey = e.key.toUpperCase()
-    const keyName = findSoundName(someKey)
+    const someKey = e.keyCode;
+    const keyName = findSoundName(someKey);
     play(someKey, keyName);
   };
 
-  const play = (key, sound) => {
+  const play = (keyCode, sound) => {
+    if (!keyCode || !sound) return;
     setSoundName(sound);
-    const audio = document.getElementById(key);
-    // styleActiveKey(audio);
+    const audio = document.getElementById(keyCode);
     audio.currentTime = 0;
     audio.play();
-    // deactivateAudio(audio);
   };
 
   const pads = () => {
@@ -39,8 +40,12 @@ export default function Launchpad({soundGroup}) {
 
   return (
     <div>
+      <h1>{soundName.toUpperCase()}</h1>
       {pads()}
-      <h1>{soundName}</h1>
+      <br />
+      <Link to='/EditLaunchpad' className='NavBarButton'>
+        CUSTOMIZE
+      </Link>
     </div>
   );
 }
