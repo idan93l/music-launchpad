@@ -1,0 +1,13 @@
+.pad {
+  height: 120px;
+  width: 120px;
+  border: 10px solid rgb(0, 217, 255);
+  border-radius: 6px;
+  background-color: rgb(61, 61, 61);
+  transition: all 0.3s;
+}
+
+.pad:active {
+  border-color: rgb(0, 255, 85);
+  transition: all 0.3s;
+}

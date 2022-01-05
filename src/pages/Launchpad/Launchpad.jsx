@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Pad from "../../components/Pad/Pad.jsx";
-import { Link } from "react-router-dom";
-import "./Launchpad.css"
+import { MdMusicNote, MdMusicOff } from "react-icons/md";
+import "./Launchpad.css";
 
 export default function Launchpad({
   soundGroup,
@@ -11,6 +11,8 @@ export default function Launchpad({
   setVolume,
 }) {
   const [soundName, setSoundName] = useState("Ready");
+  const [onOff, setOnOff] = useState(<MdMusicNote />);
+  const [toggleColor, setToggleColor] = useState("on")
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
@@ -61,31 +63,37 @@ export default function Launchpad({
   };
 
   const powerHandler = () => {
-    return power ? setPower(false) : setPower(true);
+    if (power) {
+      setPower(false);
+      setOnOff(<MdMusicOff />);
+      setToggleColor("off");
+    } else {
+      setPower(true);
+      setOnOff(<MdMusicNote />);
+      setToggleColor("on");
+    }
   };
 
   return (
-    <div className="page">
-      <br />
-      {setKeyVolume()}
-      <button onClick={powerHandler}>POWER</button>
-      <h1>{soundName.toUpperCase()}</h1>
-      {pads()}
-      <br />
-      <h2>VOLUME: {Math.round(volume * 100)}</h2>
-      <input
-        max="1"
-        min="0"
-        step="0.01"
-        type="range"
-        value={volume}
-        onChange={handleVolumeChange}
-      />
-      <br />
-      <br />
-      <Link to="/EditLaunchpad" className="NavBarButton">
+    <div className="flex page">
+      <div className="launchpadContainer">
+        {setKeyVolume()}
+        <button className={`switch ${toggleColor}`} onClick={powerHandler}>{onOff}</button>
+        <div className="flex miniScreen"><h3>{soundName.toUpperCase()}</h3></div>
+        <div className="padsContainer">{pads()}</div>
+        <h2>VOLUME: {Math.round(volume * 100)}</h2>
+        <input
+          max="1"
+          min="0"
+          step="0.01"
+          type="range"
+          value={volume}
+          onChange={handleVolumeChange}
+        />
+        {/* <Link to="/EditLaunchpad" className="NavBarButton">
         CUSTOMIZE
-      </Link>
+      </Link> */}
+      </div>
     </div>
   );
 }

@@ -16,7 +16,7 @@ export default function App() {
   const [presetToggle, setPresetToggle] = useState(1);
 
   useEffect(() => {
-    setSoundGroup(SoundGroup1);
+    setSoundGroup(SoundGroup2);
     initialLocalStorage();
   }, []);
 

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { FiSave } from "react-icons/fi";
 import { GrAdd } from "react-icons/gr";
 import { MdDone } from "react-icons/md";
+import "./EditLaunchpad.css"
 
 export default function EditLaunchpad({
   soundGroup,
@@ -176,8 +177,8 @@ export default function EditLaunchpad({
   };
 
   return (
-    <div className="page">
-      <br />
+    <div className="flex page">
+      <div className="editContainer">
       <button
         onClick={() =>
           setSoundGroup(JSON.parse(localStorage.getItem("default1")))
@@ -192,23 +193,18 @@ export default function EditLaunchpad({
       >
         Default Preset 2
       </button>
-      <br />
-      <br />
       {inputRows()}
-      <br />
       <button onClick={createRow}>
         <GrAdd />
       </button>
       <button onClick={addSet}>
         <FiSave />
       </button>
-      <br />
-      <br />
       <h1>{banner}</h1>
-      <br />
       <Link to="/" className="NavBarButton">
         <MdDone />
       </Link>
+      </div>
     </div>
   );
 }
