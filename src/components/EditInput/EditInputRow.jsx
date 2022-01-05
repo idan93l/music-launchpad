@@ -1,4 +1,4 @@
-import { IoTrashOutline } from 'react-icons/io5';
+import { IoTrashOutline } from "react-icons/io5";
 
 export default function EditInputRow({
   item,
@@ -9,7 +9,6 @@ export default function EditInputRow({
   emptyRowKeyBoardKey,
   sounds,
 }) {
-
   return (
     <div>
       <input
@@ -19,11 +18,7 @@ export default function EditInputRow({
         onChange={editRowKeyBoardKey}
         onClick={emptyRowKeyBoardKey}
       />
-      <select
-        id={index}
-        value={item.id}
-        onChange={editSoundId}
-      >
+      <select id={index} value={item.id} onChange={editSoundId}>
         {sounds.map((sound, idx) => {
           return (
             <option key={idx} value={sound.id}>
@@ -33,7 +28,7 @@ export default function EditInputRow({
         })}
       </select>
       <button onClick={() => deleteRow(index)}>
-      <IoTrashOutline style={{color: "red"}} />
+        <IoTrashOutline style={{ color: "red" }} />
       </button>
     </div>
   );

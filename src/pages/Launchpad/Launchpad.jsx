@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Pad from "../../components/Pad/Pad.jsx";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-export default function Launchpad({ soundGroup, power, setPower, volume, setVolume }) {
+export default function Launchpad({
+  soundGroup,
+  power,
+  setPower,
+  volume,
+  setVolume,
+}) {
   const [soundName, setSoundName] = useState("Ready");
 
   useEffect(() => {
@@ -38,22 +44,24 @@ export default function Launchpad({ soundGroup, power, setPower, volume, setVolu
     });
   };
 
-  const handleVolumeChange = e => {
-    setVolume(e.target.value)
-  }
-  
+  const handleVolumeChange = (e) => {
+    setVolume(e.target.value);
+  };
+
   const setKeyVolume = () => {
-    const audioes = soundGroup.map(sound => document.getElementById(sound.keyCode));
-    audioes.forEach(audio => {
-      if(audio) {
+    const audioes = soundGroup.map((sound) =>
+      document.getElementById(sound.keyCode)
+    );
+    audioes.forEach((audio) => {
+      if (audio) {
         audio.volume = volume;
       }
-    }) 
-  }
+    });
+  };
 
   const powerHandler = () => {
-    return power ? setPower(false) : setPower(true)
-  }
+    return power ? setPower(false) : setPower(true);
+  };
 
   return (
     <div>
@@ -65,16 +73,16 @@ export default function Launchpad({ soundGroup, power, setPower, volume, setVolu
       <br />
       <h2>VOLUME: {Math.round(volume * 100)}</h2>
       <input
-      max="1"
-      min="0"
-      step='0.01'
-      type="range"
-      value={volume}
-      onChange={handleVolumeChange}
+        max="1"
+        min="0"
+        step="0.01"
+        type="range"
+        value={volume}
+        onChange={handleVolumeChange}
       />
       <br />
       <br />
-      <Link to='/EditLaunchpad' className='NavBarButton'>
+      <Link to="/EditLaunchpad" className="NavBarButton">
         CUSTOMIZE
       </Link>
     </div>

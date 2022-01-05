@@ -14,9 +14,6 @@ export default function App() {
   const [localPresets, setLocalPresets] = useState([]);
   const [presetToggle, setPresetToggle] = useState(1);
 
-  console.log(localPresets);
-  // console.log(soundGroup);
-
   useEffect(() => {
     setSoundGroup(SoundGroup1);
     initialLocalStorage();
@@ -39,9 +36,9 @@ export default function App() {
 
   const deleteAllSavedSets = () => {
     if (localPresets.length === 0) return;
-    localPresets.forEach(item => {
+    localPresets.forEach((item) => {
       localStorage.removeItem(item);
-    })
+    });
     setLocalPresets([]);
   };
 

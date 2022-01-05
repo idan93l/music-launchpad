@@ -11,13 +11,11 @@ export default function EditLaunchpad({
   setSoundGroup,
   storageLength,
   presetToggle,
-  setPresetToggle
+  setPresetToggle,
 }) {
   const [soundDatabase, setSoundDatabase] = useState([]);
   const [banner, setBanner] = useState("");
   const [letters, setLetters] = useState("");
-  // const [letters, setLetters] = useState("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-
   useEffect(() => {
     const getData = async () => {
       try {
@@ -25,7 +23,6 @@ export default function EditLaunchpad({
           `https://61d163d7da87830017e59204.mockapi.io/SoundsData`
         );
         setSoundDatabase(data);
-        // setFilteredSoundDatabase(data);
       } catch (error) {
         console.log(`Error: ${error}`);
       }
@@ -67,12 +64,7 @@ export default function EditLaunchpad({
     return true;
   };
 
-  // const ifEmpty = (thisKey) => {
-  //   if (thisKey === "") setBanner("EMPTY INPUT");
-  // }
-
   const checkValidKey = (key) => {
-    // if (key === "") setBanner("EMPTY INPUT/S");
     return (
       key.length <= 1 &&
       (isKeyAlphabetical(key) || key === "") &&
@@ -81,7 +73,6 @@ export default function EditLaunchpad({
   };
 
   const editRowKeyBoardKey = (e) => {
-    // if (e.target.value === "") setBanner("EMPTY INPUT/S");
     const newKey = e.target.value.toUpperCase();
     if (!checkValidKey(newKey)) return;
     setBanner("");
@@ -160,9 +151,12 @@ export default function EditLaunchpad({
   };
 
   const addSet = () => {
-    window.localStorage.setItem(`savedSet${storageLength + 1}`, JSON.stringify(soundGroup));
-    presetToggle === 1 ? setPresetToggle(0) : setPresetToggle(1)
-  }
+    window.localStorage.setItem(
+      `savedSet${storageLength + 1}`,
+      JSON.stringify(soundGroup)
+    );
+    presetToggle === 1 ? setPresetToggle(0) : setPresetToggle(1);
+  };
 
   const inputRows = () => {
     return soundGroup.map((item, index) => {
@@ -202,8 +196,12 @@ export default function EditLaunchpad({
       <br />
       {inputRows()}
       <br />
-      <button onClick={createRow}><GrAdd /></button>
-      <button onClick={addSet}><FiSave /></button>
+      <button onClick={createRow}>
+        <GrAdd />
+      </button>
+      <button onClick={addSet}>
+        <FiSave />
+      </button>
       <br />
       <br />
       <h1>{banner}</h1>
@@ -211,9 +209,6 @@ export default function EditLaunchpad({
       <Link to="/" className="NavBarButton">
         <MdDone />
       </Link>
-      {/* <Link to="/" className="NavBarButton">
-        SAVED PRESETS
-      </Link> */}
     </div>
   );
 }
