@@ -33,17 +33,29 @@ export default function Launchpad({
     play(someKey, keyName);
   };
 
+  const deactivateAudio = (audio) => {
+    setTimeout(() => {
+      audio.previousElementSibling.style.borderColor =  ("#00d9ff");
+      audio.previousElementSibling.style.color =  ("#00d9ff");
+      // audio.parentElement.style.color = "#000000"
+    }, 200)
+    audio.previousElementSibling.style.borderColor =  ("#00ff55");
+    audio.previousElementSibling.style.color =  ("#00ff55");
+
+  }
+
   const play = (keyCode, sound) => {
     if (!keyCode || !sound || !power || volume === "0") return;
     setSoundName(sound);
     const audio = document.getElementById(keyCode);
     audio.currentTime = 0;
     audio.play();
+    deactivateAudio(audio);
   };
 
   const pads = () => {
     return soundGroup.map((dataPad, index) => {
-      return <Pad key={index} info={dataPad} index={index} play={play} />;
+      return <Pad key={index} info={dataPad} index={index} play={play}/>;
     });
   };
 
@@ -76,7 +88,6 @@ export default function Launchpad({
 
   return (
     <div className="flex page">
-      <div className="circuitry"></div>
       <div className="launchpadContainer">
         {setKeyVolume()}
         <button className={`switch ${toggleColor}`} onClick={powerHandler}>{onOff}</button>
@@ -91,9 +102,6 @@ export default function Launchpad({
           value={volume}
           onChange={handleVolumeChange}
         />
-        {/* <Link to="/EditLaunchpad" className="NavBarButton">
-        CUSTOMIZE
-      </Link> */}
       </div>
     </div>
   );

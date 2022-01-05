@@ -1,19 +1,22 @@
+
 .pad {
   height: 100%;
   width: 100%;
   font-size: 4rem;
   border: 7px solid rgb(0, 217, 255);
+  color: rgb(0, 217, 255);
   border-radius: 6px;
-  background-color: rgba(61, 61, 61, 0.733);
+  background-color: rgba(19, 19, 19, 0.541);
   transition: all 0.3s;
 }
+
 
 .empty {
-  border: 7px solid rgb(230, 62, 62);
-  background-color: rgba(230, 62, 62, 0.733);
+  border: 7px solid rgb(238, 68, 68);
+  background-color: rgba(238, 68, 68, 0.733);
 }
 
-.pad:active {
-  border-color: rgb(0, 255, 85);
-  transition: all 0.3s;
+.soundOff {
+  border-color: rgb(238, 68, 68);
+  color: rgb(238, 68, 68);
 }

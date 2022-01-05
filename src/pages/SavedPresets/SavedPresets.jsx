@@ -1,5 +1,5 @@
 import SavedSetRow from "../../components/SavedSetRow/SavedSetRow.jsx";
-import "./SavedPresets.css"
+import "./SavedPresets.css";
 
 export default function SavedPresets({
   setSoundGroup,
@@ -18,7 +18,7 @@ export default function SavedPresets({
   };
 
   const savedSetsList = () => {
-    if (localPresets.length === 0) return <h1>NO SAVED SETS TO SHOW</h1>;
+    if (localPresets.length === 0) return <h1 style={{height: "500px"}}>NO SAVED SETS TO SHOW</h1>;
     return localPresets.map((item, index) => {
       return (
         <SavedSetRow
@@ -37,9 +37,11 @@ export default function SavedPresets({
   };
 
   return (
-    <div className="page">
-      {savedSetsList()}
-      {deleteButton()}
+    <div className="flex page">
+      <div>
+        {savedSetsList()}
+        {deleteButton()}
+      </div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 // import { useEffect, useState } from "react";
 import "./Pad.css";
 
-export default function Pad({ info, play }) {
+export default function Pad({ info, play}) {
   // const [emptyKey, setEmptyKey] = useState("");
   // useEffect(() => {
   //   if (info.key === "") {
@@ -13,6 +13,12 @@ export default function Pad({ info, play }) {
       return "empty";
     }
   };
+
+  // const isPower = () => {
+  //   if (!power) {
+  //     return "soundOff"
+  //   }
+  // }
   return (
     <div>
       <button
