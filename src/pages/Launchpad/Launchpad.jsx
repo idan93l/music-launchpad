@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Pad from "../../components/Pad/Pad.jsx";
 import { Link } from "react-router-dom";
+import "./Launchpad.css"
 
 export default function Launchpad({
   soundGroup,
@@ -64,7 +65,7 @@ export default function Launchpad({
   };
 
   return (
-    <div>
+    <div className="page">
       <br />
       {setKeyVolume()}
       <button onClick={powerHandler}>POWER</button>

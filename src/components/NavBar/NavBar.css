@@ -1,0 +1,19 @@
+.NavBar {
+  height: 5vh;
+  width: 100vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.NavBarLink {
+  height: 100%;
+  color: red;
+  text-decoration: none;
+  padding: 0 0.8rem 0 0.8rem;
+  /* margin: 0 0.8rem 0 0.8rem; */
+}
+
+.home {
+  flex: 1;
+}

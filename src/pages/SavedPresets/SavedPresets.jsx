@@ -1,4 +1,5 @@
 import SavedSetRow from "../../components/SavedSetRow/SavedSetRow.jsx";
+import "./SavedPresets.css"
 
 export default function SavedPresets({
   setSoundGroup,
@@ -36,7 +37,7 @@ export default function SavedPresets({
   };
 
   return (
-    <div>
+    <div className="page">
       {savedSetsList()}
       {deleteButton()}
     </div>

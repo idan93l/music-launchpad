@@ -176,7 +176,7 @@ export default function EditLaunchpad({
   };
 
   return (
-    <div>
+    <div className="page">
       <br />
       <button
         onClick={() =>

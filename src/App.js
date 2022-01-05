@@ -6,6 +6,7 @@ import EditLaunchpad from "./pages/EditLaunchpad/EditLaunchpad.jsx";
 import SavedPresets from "./pages/SavedPresets/SavedPresets.jsx";
 import SoundGroup1 from "./SoundGroups/SoundGroup1.js";
 import SoundGroup2 from "./SoundGroups/SoundGroup2.js";
+import "./App.css"
 
 export default function App() {
   const [soundGroup, setSoundGroup] = useState([]);
