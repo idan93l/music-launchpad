@@ -3,43 +3,47 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar.jsx";
 import Launchpad from "./pages/Launchpad/Launchpad.jsx";
 import EditLaunchpad from "./pages/EditLaunchpad/EditLaunchpad.jsx";
+import SavedPresets from "./pages/SavedPresets/SavedPresets.jsx";
 import SoundGroup1 from "./SoundGroups/SoundGroup1.js";
 import SoundGroup2 from "./SoundGroups/SoundGroup2.js";
 
 export default function App() {
   const [soundGroup, setSoundGroup] = useState([]);
-  // const [preset1, setPreset1] = useState([]);
-  // const [preset2, setPreset2] = useState([]);
   const [power, setPower] = React.useState(true);
   const [volume, setVolume] = React.useState(1);
+  const [localPresets, setLocalPresets] = useState([]);
+  const [presetToggle, setPresetToggle] = useState(1);
 
-  // console.log(SoundGroup1);
-  // console.log(SoundGroup2);
-  // console.log(preset1);
-  // console.log(preset2);
+  console.log(localPresets);
+  // console.log(soundGroup);
 
   useEffect(() => {
     setSoundGroup(SoundGroup1);
+    initialLocalStorage();
   }, []);
 
   useEffect(() => {
-    UpdateLocalStorage();
-  },[])
+    const storage = [];
+    const keys = Object.keys(localStorage);
+    for (let i = 0; i < keys.length; i++) {
+      if (keys[i] !== "default1" && keys[i] !== "default2")
+        storage.push(keys[i]);
+    }
+    setLocalPresets(storage.sort());
+  }, [presetToggle]);
 
-    const UpdateLocalStorage = () => {
-    window.localStorage.setItem('preset1', JSON.stringify(SoundGroup1));
-    window.localStorage.setItem('preset2', JSON.stringify(SoundGroup2));
-  }
-  // const getSoundGroupNumber = (someSoundGroup) => {
-  //   if (!someSoundGroup || !someSoundGroup.length) {
-  //     return 1;
-  //   }
-  //   console.log(someSoundGroup);
-  //   if (someSoundGroup[0].id === "Heater-1") {
-  //     return 1;
-  //   }
-  //   return 2;
-  // }
+  const initialLocalStorage = () => {
+    window.localStorage.setItem("default1", JSON.stringify(SoundGroup1));
+    window.localStorage.setItem("default2", JSON.stringify(SoundGroup2));
+  };
+
+  const deleteAllSavedSets = () => {
+    if (localPresets.length === 0) return;
+    localPresets.forEach(item => {
+      localStorage.removeItem(item);
+    })
+    setLocalPresets([]);
+  };
 
   return (
     <div className="App">
@@ -62,13 +66,23 @@ export default function App() {
             path="/EditLaunchpad"
             element={
               <EditLaunchpad
-                // key={getSoundGroupNumber(soundGroup)}
                 soundGroup={soundGroup}
                 setSoundGroup={setSoundGroup}
-                // preset1={preset1}
-                // preset2={preset2}
-                // setPreset1={setPreset1}
-                // setPreset2={setPreset2}
+                storageLength={localPresets.length}
+                presetToggle={presetToggle}
+                setPresetToggle={setPresetToggle}
+              />
+            }
+          />
+          <Route
+            path="/SavedPresets"
+            element={
+              <SavedPresets
+                setSoundGroup={setSoundGroup}
+                localPresets={localPresets}
+                deleteAllSavedSets={deleteAllSavedSets}
+                presetToggle={presetToggle}
+                setPresetToggle={setPresetToggle}
               />
             }
           />

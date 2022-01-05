@@ -10,6 +10,9 @@ export default function NavBar() {
       <Link to='/EditLaunchpad' className='NavBarButton'>
         EDIT LAUNCHPAD
       </Link>
+      <Link to='/SavedPresets' className='NavBarButton'>
+        SAVED PRESETS
+      </Link>
     </div>
   );
 }
