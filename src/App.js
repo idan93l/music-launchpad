@@ -11,12 +11,12 @@ import "./App.css"
 export default function App() {
   const [soundGroup, setSoundGroup] = useState([]);
   const [power, setPower] = React.useState(true);
-  const [volume, setVolume] = React.useState(1);
+  const [volume, setVolume] = React.useState(0.5);
   const [localPresets, setLocalPresets] = useState([]);
   const [presetToggle, setPresetToggle] = useState(1);
 
   useEffect(() => {
-    setSoundGroup(SoundGroup2);
+    setSoundGroup(SoundGroup1);
     initialLocalStorage();
   }, []);
 

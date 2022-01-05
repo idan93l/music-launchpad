@@ -11,6 +11,11 @@
 }
 
 
+/* .pressed {
+  border-color: #00ff55;
+  color: #00ff55;
+} */
+
 .empty {
   border: 7px solid rgb(238, 68, 68);
   background-color: rgba(238, 68, 68, 0.733);

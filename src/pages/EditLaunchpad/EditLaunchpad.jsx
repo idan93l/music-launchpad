@@ -43,6 +43,14 @@ export default function EditLaunchpad({
     updateLetters();
   }, [soundGroup]);
 
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setBanner("");
+    }, 2000);
+
+    return () => clearTimeout(timeout);
+  }, [banner]);
+
   const toKeyCode = (key) => {
     return key ? key.charCodeAt(0) : "";
   };
@@ -50,7 +58,7 @@ export default function EditLaunchpad({
   const keyAppear = (thisKey) => {
     for (let i = 0; i < soundGroup.length; i++) {
       if (soundGroup[i].key === thisKey) {
-        setBanner("KEY ALREADY USED");
+        setBanner(`"${thisKey}" ALREADY USED`);
         return false;
       }
     }
@@ -76,7 +84,7 @@ export default function EditLaunchpad({
   const editRowKeyBoardKey = (e) => {
     const newKey = e.target.value.toUpperCase();
     if (!checkValidKey(newKey)) return;
-    setBanner("");
+    newKey === "" ? setBanner("EMPTY INPUT/S") : setBanner("");
     const newKeyCode = toKeyCode(newKey);
     const newSoundGroup = [...soundGroup];
     const item = newSoundGroup[+e.target.id];

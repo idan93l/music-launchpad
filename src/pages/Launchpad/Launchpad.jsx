@@ -10,9 +10,7 @@ export default function Launchpad({
   volume,
   setVolume,
 }) {
-  const [soundName, setSoundName] = useState("Ready");
-  const [onOff, setOnOff] = useState(<MdMusicNote />);
-  const [toggleColor, setToggleColor] = useState("on")
+  const [soundName, setSoundName] = useState("");
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
@@ -20,6 +18,18 @@ export default function Launchpad({
       document.removeEventListener("keydown", handleKeyDown);
     };
   });
+
+  useEffect(() => {
+    return power ? setSoundName("ready") : setSoundName("off");
+  },[power])
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setSoundName("");
+    }, 1000);
+
+    return () => clearTimeout(timeout);
+  }, [soundName]);
 
   const findSoundName = (keyCode) => {
     for (let i = 0; i < soundGroup.length; i++) {
@@ -33,16 +43,14 @@ export default function Launchpad({
     play(someKey, keyName);
   };
 
-  const deactivateAudio = (audio) => {
+  const pressed = (audio) => {
+    audio.previousElementSibling.style.borderColor = "#00ff55";
+    audio.previousElementSibling.style.color = "#00ff55";
     setTimeout(() => {
-      audio.previousElementSibling.style.borderColor =  ("#00d9ff");
-      audio.previousElementSibling.style.color =  ("#00d9ff");
-      // audio.parentElement.style.color = "#000000"
-    }, 200)
-    audio.previousElementSibling.style.borderColor =  ("#00ff55");
-    audio.previousElementSibling.style.color =  ("#00ff55");
-
-  }
+      audio.previousElementSibling.style.borderColor = "";
+      audio.previousElementSibling.style.color = "";
+    }, 200);
+  };
 
   const play = (keyCode, sound) => {
     if (!keyCode || !sound || !power || volume === "0") return;
@@ -50,12 +58,12 @@ export default function Launchpad({
     const audio = document.getElementById(keyCode);
     audio.currentTime = 0;
     audio.play();
-    deactivateAudio(audio);
+    pressed(audio);
   };
 
   const pads = () => {
     return soundGroup.map((dataPad, index) => {
-      return <Pad key={index} info={dataPad} index={index} play={play}/>;
+      return <Pad key={index} info={dataPad} index={index} play={play} power={power}/>;
     });
   };
 
@@ -74,15 +82,23 @@ export default function Launchpad({
     });
   };
 
+  const toggleColor = () => {
+    return power ? "on" : "off";
+  }
+
+  const toggleSwitch = () => {
+    return power ? <MdMusicNote /> : <MdMusicOff />;
+  }
+
   const powerHandler = () => {
     if (power) {
       setPower(false);
-      setOnOff(<MdMusicOff />);
-      setToggleColor("off");
+      setSoundName("off");
+      setVolume(0);
     } else {
       setPower(true);
-      setOnOff(<MdMusicNote />);
-      setToggleColor("on");
+      setSoundName("on");
+      setVolume(0.5);
     }
   };
 
@@ -90,11 +106,18 @@ export default function Launchpad({
     <div className="flex page">
       <div className="launchpadContainer">
         {setKeyVolume()}
-        <button className={`switch ${toggleColor}`} onClick={powerHandler}>{onOff}</button>
-        <div className="flex miniScreen soundName"><h3>{soundName.toUpperCase()}</h3></div>
+        <button className={`switch ${toggleColor()}`} onClick={powerHandler}>
+          {toggleSwitch()}
+        </button>
+        <div className="flex miniScreen soundName">
+          <h3>{soundName.toUpperCase()}</h3>
+        </div>
         <div className="padsContainer">{pads()}</div>
-        <div className="flex miniScreen volume"><h3>{Math.round(volume * 100)}%</h3></div>
+        <div className="flex miniScreen volume">
+          <h3>{Math.round(volume * 100)}%</h3>
+        </div>
         <input
+          disabled={!power}
           max="1"
           min="0"
           step="0.01"

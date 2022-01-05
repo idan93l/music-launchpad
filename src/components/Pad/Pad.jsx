@@ -1,28 +1,23 @@
 // import { useEffect, useState } from "react";
 import "./Pad.css";
 
-export default function Pad({ info, play}) {
-  // const [emptyKey, setEmptyKey] = useState("");
-  // useEffect(() => {
-  //   if (info.key === "") {
-  //     setEmptyKey("empty")
-  //   }
-  // }, [info.key])
+export default function Pad({ info, play, power}) {
   const emptyKey = () => {
     if (info.key === "") {
       return "empty";
     }
   };
 
-  // const isPower = () => {
-  //   if (!power) {
-  //     return "soundOff"
-  //   }
-  // }
+  const soundOff = () => {
+    if (!power) {
+      return "soundOff";
+    }
+  };
+
   return (
     <div>
       <button
-        className={`pad ${emptyKey()}`}
+        className={`pad ${soundOff()} ${emptyKey()}`}
         onClick={() => play(info.keyCode, info.id)}
       >
         {info.key}
