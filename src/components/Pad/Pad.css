@@ -1,10 +1,16 @@
 .pad {
-  height: 120px;
-  width: 120px;
-  border: 10px solid rgb(0, 217, 255);
+  height: 100%;
+  width: 100%;
+  font-size: 4rem;
+  border: 7px solid rgb(0, 217, 255);
   border-radius: 6px;
-  background-color: rgb(61, 61, 61);
+  background-color: rgba(61, 61, 61, 0.733);
   transition: all 0.3s;
+}
+
+.empty {
+  border: 7px solid rgb(230, 62, 62);
+  background-color: rgba(230, 62, 62, 0.733);
 }
 
 .pad:active {

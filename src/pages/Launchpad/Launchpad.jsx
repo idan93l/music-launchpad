@@ -76,12 +76,13 @@ export default function Launchpad({
 
   return (
     <div className="flex page">
+      <div className="circuitry"></div>
       <div className="launchpadContainer">
         {setKeyVolume()}
         <button className={`switch ${toggleColor}`} onClick={powerHandler}>{onOff}</button>
-        <div className="flex miniScreen"><h3>{soundName.toUpperCase()}</h3></div>
+        <div className="flex miniScreen soundName"><h3>{soundName.toUpperCase()}</h3></div>
         <div className="padsContainer">{pads()}</div>
-        <h2>VOLUME: {Math.round(volume * 100)}</h2>
+        <div className="flex miniScreen volume"><h3>{Math.round(volume * 100)}%</h3></div>
         <input
           max="1"
           min="0"

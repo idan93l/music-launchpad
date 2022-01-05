@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { IoTrashOutline } from "react-icons/io5";
 
 export default function EditInputRow({
@@ -9,6 +10,24 @@ export default function EditInputRow({
   emptyRowKeyBoardKey,
   sounds,
 }) {
+  const [deleteButton, setDeleteButton] = useState(false);
+  useEffect(() => {
+    // index > 8 ? setDeleteButton(true) : setDeleteButton(false)
+    if (index > 8) {
+      setDeleteButton(true);
+    }
+  });
+
+  const showDeleteButton = () => {
+    if (deleteButton) {
+      return (
+        <button onClick={() => deleteRow(index)}>
+          <IoTrashOutline style={{ color: "red" }} />
+        </button>
+      );
+    }
+    return;
+  };
   return (
     <div>
       <input
@@ -27,9 +46,7 @@ export default function EditInputRow({
           );
         })}
       </select>
-      <button onClick={() => deleteRow(index)}>
-        <IoTrashOutline style={{ color: "red" }} />
-      </button>
+      {showDeleteButton()}
     </div>
   );
 }
