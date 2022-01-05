@@ -44,15 +44,10 @@ button {
   -moz-appearance: none;
 }
 
-/* button:hover,
-button:focus {
-  background: #0053ba;
-} */
 
-/* button:focus {
-  outline: 1px solid #fff;
-  outline-offset: -4px;
-} */
+button:focus {
+  outline: none;
+}
 
 button:active {
   box-shadow: inset 1px 1px 10px #333;

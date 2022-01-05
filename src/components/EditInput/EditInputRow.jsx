@@ -16,7 +16,7 @@ export default function EditInputRow({
     if (index > 8) {
       setDeleteButton(true);
     }
-  });
+  }, [index]);
 
   const showDeleteButton = () => {
     if (deleteButton) {

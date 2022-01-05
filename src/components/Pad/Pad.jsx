@@ -7,7 +7,7 @@ export default function Pad({ info, play }) {
     if (info.key === "") {
       setEmptyKey("empty")
     }
-  })
+  }, [info.key])
   return (
     <div>
       <button className={`pad ${emptyKey}`} onClick={() => play(info.keyCode, info.id)}>{info.key}</button>
