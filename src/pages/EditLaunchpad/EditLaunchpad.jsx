@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import EditInputRow from "../../components/EditInput/EditInputRow.jsx";
-import { Link } from "react-router-dom";
 import { FiSave } from "react-icons/fi";
-import { GrAdd } from "react-icons/gr";
-import { MdDone } from "react-icons/md";
+import { CgAdd } from "react-icons/cg";
+import { IoMdMusicalNote, IoMdMusicalNotes } from "react-icons/io";
 import "./EditLaunchpad.css";
 
 export default function EditLaunchpad({
@@ -58,7 +57,7 @@ export default function EditLaunchpad({
   const keyAppear = (thisKey) => {
     for (let i = 0; i < soundGroup.length; i++) {
       if (soundGroup[i].key === thisKey) {
-        setBanner(`"${thisKey}" ALREADY USED`);
+        setBanner(`"${thisKey}" IS USED`);
         return false;
       }
     }
@@ -67,7 +66,7 @@ export default function EditLaunchpad({
 
   const isKeyAlphabetical = (thisKey) => {
     if (!thisKey.match(/[A-Z]/i)) {
-      setBanner("ALPHABETICAL CHARACTERS ONLY");
+      setBanner("A-Z ONLY");
       return false;
     }
     return true;
@@ -188,30 +187,31 @@ export default function EditLaunchpad({
     <div className="flex page">
       <div className="editContainer">
         <div className="buttonsRow">
-        <button
-          onClick={() =>
-            setSoundGroup(JSON.parse(localStorage.getItem("default1")))
-          }
-        >
-          Preset 1
-        </button>
-        <button
-          onClick={() =>
-            setSoundGroup(JSON.parse(localStorage.getItem("default2")))
-          }
-        >
-          Preset 2
-        </button>
-        <Link to="/" className="NavBarButton">
-          <MdDone />
-        </Link>
-        <button onClick={addSet}>
-          <FiSave />
-        </button>
-        <button onClick={createRow}>
-          <GrAdd />
-        </button>
-        {banner}
+          <button
+            className="preset1"
+            onClick={() =>
+              setSoundGroup(JSON.parse(localStorage.getItem("default1")))
+            }
+          >
+            <IoMdMusicalNote />
+          </button>
+          <button
+            className="preset2"
+            onClick={() =>
+              setSoundGroup(JSON.parse(localStorage.getItem("default2")))
+            }
+          >
+            <IoMdMusicalNotes />
+          </button>
+          <div className="editSpace">
+            <div className="editMiniScreen">{banner}</div>
+          </div>
+          <button className="saveSet" onClick={addSet}>
+            <FiSave />
+          </button>
+          <button className="add" onClick={createRow}>
+            <CgAdd />
+          </button>
         </div>
         <div className="rowsContainer">{inputRows()}</div>
       </div>

@@ -1,0 +1,33 @@
+.foldersContainer {
+height: 80%;
+width: 120vmin;
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-direction: column;
+background-color: rgba(29, 29, 29, 0.657);
+border-radius: 10px;
+border: 5px solid rgba(56, 56, 56, 0.644);
+}
+
+.gridFolders {
+  flex: 1;
+  height: 65%;
+  width: 90%;
+  display: grid;
+  grid-gap: 1px;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.delete {
+  align-self: flex-end;
+  font-size: 30px;
+  padding: 5px 8px 5px 8px;
+  transition: all 0.3s;
+  border-radius: 0 0 0 40%;
+  background-color: rgba(228, 47, 47, 0.466);
+}
+
+.deleteButton:hover {
+  background-color: rgb(228, 47, 47);
+}

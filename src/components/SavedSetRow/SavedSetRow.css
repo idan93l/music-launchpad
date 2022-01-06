@@ -1,0 +1,40 @@
+.folder {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  height: 65%;
+  width: 70%;
+  font-size: 3vmin;
+  background-color: rgb(200, 200, 0);
+  color: rgb(51, 51, 51);
+  border-radius: 10px;
+}
+
+.folderButtons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.deleteSet {
+  height: 100%;
+  width: 100%;
+  transition: all 0.3s;
+  background-color: rgba(207, 53, 53, 0.644);
+}
+
+.deleteSet:hover {
+  background-color: rgb(219, 67, 67);
+}
+
+.armSet {
+  height: 100%;
+  width: 100%;
+  transition: all 0.3s;
+  background-color: rgba(55, 125, 238, 0.685);
+}
+
+.armSet:hover {
+  background-color: rgb(55, 125, 238);
+}

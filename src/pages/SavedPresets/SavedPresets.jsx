@@ -1,4 +1,5 @@
 import SavedSetRow from "../../components/SavedSetRow/SavedSetRow.jsx";
+import { FiDelete } from "react-icons/fi";
 import "./SavedPresets.css";
 
 export default function SavedPresets({
@@ -33,14 +34,16 @@ export default function SavedPresets({
 
   const deleteButton = () => {
     if (localPresets.length > 0)
-      return <button onClick={deleteAllSavedSets}>DELETE ALL</button>;
+      return <button className="delete" onClick={deleteAllSavedSets}><FiDelete /></button>;
   };
 
   return (
     <div className="flex page">
-      <div>
-        {savedSetsList()}
+      <div className="foldersContainer">
         {deleteButton()}
+        <div className="gridFolders">
+        {savedSetsList()}
+        </div>
       </div>
     </div>
   );

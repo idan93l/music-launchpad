@@ -13,7 +13,7 @@ export default function EditInputRow({
   const showDeleteButton = () => {
     if (index > 8) {
       return (
-        <button onClick={() => deleteRow(index)}>
+        <button className="deleteButton" onClick={() => deleteRow(index)}>
           <IoTrashOutline />
         </button>
       );
@@ -22,6 +22,7 @@ export default function EditInputRow({
   };
   return (
     <div className="padData">
+      {showDeleteButton()}
       <input
         id={index}
         type="text"
@@ -38,7 +39,6 @@ export default function EditInputRow({
           );
         })}
       </select>
-      {showDeleteButton()}
     </div>
   );
 }
