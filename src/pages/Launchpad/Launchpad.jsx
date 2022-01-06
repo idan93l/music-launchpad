@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Pad from "../../components/Pad/Pad.jsx";
-import { MdMusicNote, MdMusicOff } from "react-icons/md";
+import { MdOutlineMusicNote, MdMusicOff } from "react-icons/md";
 import "./Launchpad.css";
 
 export default function Launchpad({
@@ -20,7 +20,7 @@ export default function Launchpad({
   });
 
   useEffect(() => {
-    return power ? setSoundName("ready") : setSoundName("off");
+    return power ? setSoundName("on") : setSoundName("off");
   },[power])
 
   useEffect(() => {
@@ -69,6 +69,7 @@ export default function Launchpad({
 
   const handleVolumeChange = (e) => {
     setVolume(e.target.value);
+    +e.target.value === 0 ? setPower(false) : setPower(true);
   };
 
   const setKeyVolume = () => {
@@ -87,37 +88,34 @@ export default function Launchpad({
   }
 
   const toggleSwitch = () => {
-    return power ? <MdMusicNote /> : <MdMusicOff />;
+    return power ? <MdOutlineMusicNote /> : <MdMusicOff />;
   }
 
   const powerHandler = () => {
     if (power) {
       setPower(false);
-      setSoundName("off");
       setVolume(0);
     } else {
       setPower(true);
-      setSoundName("on");
       setVolume(0.5);
     }
   };
 
   return (
     <div className="flex page">
-      <div className="launchpadContainer">
         {setKeyVolume()}
+      <div className="launchpadContainer">
+        <div className="firstRow">
         <button className={`switch ${toggleColor()}`} onClick={powerHandler}>
           {toggleSwitch()}
         </button>
-        <div className="flex miniScreen soundName">
-          <h3>{soundName.toUpperCase()}</h3>
+        <div className="miniScreen soundName">
+          <div>{soundName.toUpperCase()}</div>
+          <div className="volume">{Math.round(volume * 100)}%</div>
+        </div>
         </div>
         <div className="padsContainer">{pads()}</div>
-        <div className="flex miniScreen volume">
-          <h3>{Math.round(volume * 100)}%</h3>
-        </div>
         <input
-          disabled={!power}
           max="1"
           min="0"
           step="0.01"

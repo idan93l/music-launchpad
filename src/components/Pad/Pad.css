@@ -2,7 +2,7 @@
 .pad {
   height: 100%;
   width: 100%;
-  font-size: 4rem;
+  font-size: 6vmin;
   border: 7px solid rgb(0, 217, 255);
   color: rgb(0, 217, 255);
   border-radius: 6px;
@@ -10,11 +10,10 @@
   transition: all 0.3s;
 }
 
-
-/* .pressed {
-  border-color: #00ff55;
-  color: #00ff55;
-} */
+.pad:hover{
+  border-color: rgb(255, 0, 170);
+  color: rgb(255, 0, 170);
+}
 
 .empty {
   border: 7px solid rgb(238, 68, 68);

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { FiSave } from "react-icons/fi";
 import { GrAdd } from "react-icons/gr";
 import { MdDone } from "react-icons/md";
-import "./EditLaunchpad.css"
+import "./EditLaunchpad.css";
 
 export default function EditLaunchpad({
   soundGroup,
@@ -143,7 +143,7 @@ export default function EditLaunchpad({
 
   const createRow = () => {
     const newSoundData = filterSoundData();
-    console.log(newSoundData);
+    if (newSoundData.length === 0) return;
     const randomLetter = letters[randomData(letters)];
     const randomId = newSoundData[randomData(newSoundData)];
     const letterCode = toKeyCode(randomLetter);
@@ -187,31 +187,33 @@ export default function EditLaunchpad({
   return (
     <div className="flex page">
       <div className="editContainer">
-      <button
-        onClick={() =>
-          setSoundGroup(JSON.parse(localStorage.getItem("default1")))
-        }
-      >
-        Default Preset 1
-      </button>
-      <button
-        onClick={() =>
-          setSoundGroup(JSON.parse(localStorage.getItem("default2")))
-        }
-      >
-        Default Preset 2
-      </button>
-      {inputRows()}
-      <button onClick={createRow}>
-        <GrAdd />
-      </button>
-      <button onClick={addSet}>
-        <FiSave />
-      </button>
-      <h1>{banner}</h1>
-      <Link to="/" className="NavBarButton">
-        <MdDone />
-      </Link>
+        <div className="buttonsRow">
+        <button
+          onClick={() =>
+            setSoundGroup(JSON.parse(localStorage.getItem("default1")))
+          }
+        >
+          Preset 1
+        </button>
+        <button
+          onClick={() =>
+            setSoundGroup(JSON.parse(localStorage.getItem("default2")))
+          }
+        >
+          Preset 2
+        </button>
+        <Link to="/" className="NavBarButton">
+          <MdDone />
+        </Link>
+        <button onClick={addSet}>
+          <FiSave />
+        </button>
+        <button onClick={createRow}>
+          <GrAdd />
+        </button>
+        {banner}
+        </div>
+        <div className="rowsContainer">{inputRows()}</div>
       </div>
     </div>
   );

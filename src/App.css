@@ -16,7 +16,7 @@
   background-position: center center;
   font-size: 25px;
   color: #ffffff;
-  font-family: 'Staatliches', cursive;
+  font-family: "Staatliches", cursive;
 }
 
 .flex {
@@ -29,65 +29,57 @@
 button {
   display: inline-block;
   border: none;
-  /* padding: 1rem 2rem; */
-  /* margin: 0; */
   text-decoration: none;
-  /* background: #0069ed; */
   color: #ffffff;
-  /* font-family: sans-serif;
-  font-size: 1rem; */
   cursor: pointer;
-  /* text-align: center; */
-  /* transition: background 250ms ease-in-out, transform 150ms ease; */
-  /* -webkit-appearance: none;
-  -moz-appearance: none; */
 }
-
 
 button:focus {
   outline: none;
 }
 
 button:active {
-  box-shadow: none
+  box-shadow: none;
 }
 
-/* .flexColumn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-} */
+input,
+select {
+  color: #ffffff;
+}
 
-input[type=range]{
+input[type="range"] {
   -webkit-appearance: none;
   margin-bottom: 15px;
   cursor: pointer;
   width: 50%;
+  border-radius: 20px;
 }
 
-input[type=range]::-webkit-slider-runnable-track {
-  height: 5px;
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 7px;
   background: #ddd;
   border: none;
-  border-radius: 3px;
+  border-radius: 5px;
 }
 
-input[type=range]::-webkit-slider-thumb {
+input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   border: none;
-  height: 30px;
-  width: 30px;
-  border-radius: 10px;
+  height: 35px;
+  width: 35px;
+  border-radius: 7px;
   background: rgb(238, 68, 68);
-  margin-top: -13px;
+  margin-top: -14px;
+  transition: all 0.3s;
 }
 
-input[type=range]:focus {
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: rgb(238, 68, 68);
+  border-radius: 20px;
+}
+
+input[type="range"]:focus,
+input:focus,
+select:focus {
   outline: none;
 }
-
-/* input[type=range]:focus::-webkit-slider-runnable-track {
-  background: rgb(87, 85, 85);
-  border-radius: 5px;
-} */

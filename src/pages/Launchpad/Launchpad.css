@@ -1,6 +1,6 @@
 .launchpadContainer {
   height: 80%;
-  width: 600px;
+  width: 120vmin;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,42 +16,73 @@
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 50px;
 }
 
 .switch {
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  font-size: 30px;
   align-self: flex-start;
-  margin: 5px;
+  border: 6px solid;
+  border-radius: 50%;
+  margin: 6px 0 0 5px;
+  background-color: rgba(8, 8, 8, 0.829);
 }
 
 .on {
-  background-color: rgb(119, 207, 119);
+  border-color: rgb(119, 207, 119);
+  color: rgb(119, 207, 119);
+  border-radius: 10%;
   transition: all 0.3s;
+}
+
+.on:hover {
+  border-color: rgb(82, 144, 82);
+  color: rgb(82, 144, 82)
 }
 
 .off {
-  background-color: rgb(177, 57, 57);
+  border-color: rgb(177, 57, 57);
+  /* color: rgb(177, 57, 57); */
   transition: all 0.3s;
 }
 
+.off:hover {
+  border-color: rgb(126, 41, 41);
+  /* color: rgb(126, 41, 41); */
+}
+
+.firstRow {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
 .miniScreen {
+  height: 100%;
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  align-self: center;
   color: rgb(0, 255, 242);
   background-color: rgb(14, 13, 13);
   font-family: 'DS-Digital', sans-serif;
   border: 5px groove grey;
   border-radius: 10px;
+  padding: 0 10px 0 10px;
 }
 
 .soundName {
-  height: 50px;
-  width: 250px;
   font-size: 35px;
+  margin: 20px 5px 0 0;
 }
 
 .volume {
-  height: 24px;
-  width: 60px;
-  font-size: 20px;
+  font-size: 30px;
 }

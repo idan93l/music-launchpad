@@ -1,7 +1,35 @@
 .editContainer {
-  height: 60%;
+  height: 80%;
+  width: 120vmin;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+  background-color: rgba(29, 29, 29, 0.657);
+  border: 5px solid rgba(56, 56, 56, 0.644);
+  border-radius: 10px;
+}
+
+.editContainer input {
+  width: 20%;
+}
+.editContainer select {
+  width: 90%;
+}
+
+.editContainer input, select {
+  text-align: center;
+  font-size: 6vmin;
+  background-color: rgb(255, 0, 170);
+  cursor: pointer;
+  border: none;
+  border-radius: 7px;
+}
+
+.rowsContainer {
+  height: 65%;
+  width: 90%;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
 }
