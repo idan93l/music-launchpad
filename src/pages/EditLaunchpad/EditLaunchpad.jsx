@@ -36,7 +36,6 @@ export default function EditLaunchpad({
       for (let i = 0; i < soundGroup.length; i++) {
         letterString = letterString.replace(soundGroup[i].key, "");
       }
-      // console.log(letterString);
       setLetters(letterString);
     };
     updateLetters();

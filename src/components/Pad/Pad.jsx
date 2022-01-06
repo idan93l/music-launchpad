@@ -1,4 +1,3 @@
-// import { useEffect, useState } from "react";
 import "./Pad.css";
 
 export default function Pad({ info, play, power}) {
