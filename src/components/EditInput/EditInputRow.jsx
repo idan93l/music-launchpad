@@ -24,6 +24,7 @@ export default function EditInputRow({
     <div className="padData">
       {showDeleteButton()}
       <input
+        className="inputKey"
         id={index}
         type="text"
         value={item.key}

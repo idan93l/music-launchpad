@@ -13,7 +13,7 @@ export default function SavedSetRow({ index, loadSavedSet, deleteSet }) {
         <IoTrashOutline className="deleteSet"/>
       </button>
       </div>
-      <p>{`SAVED SET ${index}`}</p>
+      <p>{`SAVE ${index}`}</p>
     </div>
   );
 }

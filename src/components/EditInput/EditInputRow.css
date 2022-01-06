@@ -11,6 +11,10 @@
   position: relative;
 }
 
+.inputKey {
+  display: inline-block;
+}
+
 .deleteButton {
   top: 0;
   right: 0;
@@ -24,4 +28,10 @@
 
 .deleteButton:hover {
   background-color: rgb(228, 47, 47);
+}
+
+@media (max-width: 800px) {
+  .inputKey {
+    display: none;
+  }
 }

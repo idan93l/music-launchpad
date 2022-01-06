@@ -10,6 +10,10 @@
   transition: all 0.3s;
 }
 
+.launchpadKey {
+  display: inline-block;
+}
+
 .pad:hover{
   border-color: rgb(255, 0, 170);
   color: rgb(255, 0, 170);
@@ -23,4 +27,15 @@
 .soundOff {
   border-color: rgb(238, 68, 68);
   color: rgb(238, 68, 68);
+}
+
+
+@media (max-width: 800px) {
+  .launchpadKey {
+    display: none;
+  }
+
+  .pad {
+    margin-top: 30px;
+  }
 }

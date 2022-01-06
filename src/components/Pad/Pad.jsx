@@ -20,7 +20,7 @@ export default function Pad({ info, play, power}) {
         className={`pad ${soundOff()} ${emptyKey()}`}
         onClick={() => play(info.keyCode, info.id)}
       >
-        {info.key}
+        <p className="launchpadKey">{info.key}</p>
       </button>
       <audio src={info.url} id={info.keyCode} />
     </div>
