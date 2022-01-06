@@ -159,7 +159,7 @@ export default function EditLaunchpad({
 
   const addSet = () => {
     window.localStorage.setItem(
-      `savedSet${storageLength + 1}`,
+      `savedSet${+storageLength + 1}`,
       JSON.stringify(soundGroup)
     );
     presetToggle === 1 ? setPresetToggle(0) : setPresetToggle(1);

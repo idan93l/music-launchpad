@@ -24,7 +24,7 @@ export default function SavedPresets({
       return (
         <SavedSetRow
           key={index}
-          index={item[item.length - 1]}
+          index={index+1}
           loadSavedSet={loadSavedSet}
           deleteSet={deleteSet}
         />
